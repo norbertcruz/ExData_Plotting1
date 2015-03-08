@@ -1,3 +1,6 @@
+
+plot4 <- function() {
+
 ## Read Data
 
     library(data.table)
@@ -29,35 +32,38 @@
 
 ## Create pgn file
 
-    png(file = "./ExData_Plotting1/plot4.png")
+    png(file = "./ExData_Plotting1/plot4.png", width = 480, height = 480)
 
 ## Create Plot
     
-    par(mfrow = c(2, 2), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0))
+    par(mfrow = c(2, 2), mar = c(5, 4, 5, 3.5), oma = c(0, 0, 0, 0))
     
     with(data, {
         
         plot(data$Global_active_power ~ data$DateTime, ty = "l", 
-             xlab = "dateTime", ylab = "Global Active Power (kilowatts)")
+             xlab = "", ylab = "Global Active Power")
         
-        plot(data$Voltage ~ data$DateTime, ty = "l", xlab = "dateTime",
+        plot(data$Voltage ~ data$DateTime, ty = "l", xlab = "datetime",
              ylab = "Voltage")
         
-        plot(data$Sub_metering_1 ~ data$DateTime, ty = "l", xlab = "datetime",
+        plot(data$Sub_metering_1 ~ data$DateTime, ty = "l", xlab = "",
              ylab = "Energy sub metering")
         
-        points(data$Sub_metering_2 ~ data$DateTime, ty = "l", col = "red")
+            points(data$Sub_metering_2 ~ data$DateTime, ty = "l", col = "red")
         
-        points(data$Sub_metering_3 ~ data$DateTime, ty = "l", col = "blue")
+            points(data$Sub_metering_3 ~ data$DateTime, ty = "l", col = "blue")
         
-        legend("topright", lty = 1, col = c("black", "red", "blue"), 
-               legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+            legend("topright", lty = 1, bty = "n" , col = c("black", "red", 
+                "blue"), legend = c("Sub_metering_1", "Sub_metering_2", 
+                "Sub_metering_3"))
         
         plot(data$Global_reactive_power ~ data$DateTime, ty = "l", 
-             xlab = "dateTime", ylab = "Global Reactive Power (kilowatts)")
+             xlab = "datetime", ylab = "Global_reactive _power")
         
     })
     
 ## Close file
 
     dev.off()
+
+}

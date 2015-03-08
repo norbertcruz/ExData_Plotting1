@@ -1,4 +1,6 @@
 
+plot3 <- function() {
+
 ## Read Data
 
     library(data.table)
@@ -30,11 +32,11 @@
 
 ## Create pgn file
 
-    png(file = "./ExData_Plotting1/plot3.png")
+    png(file = "./ExData_Plotting1/plot3.png", width = 480, height = 480)
 
 ## Create Plot
 
-    plot(data$Sub_metering_1 ~ data$DateTime, ty = "l", xlab = "datetime",
+    plot(data$Sub_metering_1 ~ data$DateTime, ty = "l", xlab = "",
          ylab = "Energy sub metering")
     
     points(data$Sub_metering_2 ~ data$DateTime, ty = "l", col = "red")
@@ -47,3 +49,5 @@
 ## Close file
 
     dev.off()
+
+}
